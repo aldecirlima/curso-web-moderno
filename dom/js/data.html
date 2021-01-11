@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datas</title>
+    <style>
+        .datavencida {
+            background-color: rgb(204, 80, 80);
+        }
+        .datahoje {
+            background-color: rgb(221, 209, 38);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p capt-date>05/10/2020</p>
+    </div>
+    <script>
+        const parag = document.querySelector('[capt-date]')
+        const classes = parag.classList
+        const paragText = parag.innerText
+        const dCalc = paragText.split('/')
+        console.log(dCalc)
+        const dataAgora = new Date()
+        const dia = dataAgora.getDate()
+        const mes = dataAgora.getMonth() + 1
+        const ano = dataAgora.getFullYear()
+
+        const dataHoje = new Date(ano, mes - 1, dia)
+        console.log('Data Atual:', dataHoje)
+        const dataCapt = new Date(parseInt(dCalc[2]), 
+            parseInt(dCalc[1]) - 1, parseInt(dCalc[0]))
+        console.log('Nova data:', dataCapt)
+        classes.add('datahoje')
+        if(dataHoje > dataCapt) {
+            classes.remove('datahoje')
+            classes.add('datavencida')
+        } 
+        if(dataHoje < dataCapt) {
+            classes.remove('datahoje')
+        } 
+ 
+    </script>
+</body>
+</html>

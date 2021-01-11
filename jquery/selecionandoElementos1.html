@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Selecionando Elementos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        .negrito {
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Selecionando Elementos #01</h1>
+    <div>
+        <p>Parágrafo
+            <span class='negrito'>dentro span</span>
+        </p>
+    </div>
+    <div>
+        <ul id='feira'>
+            <li>Arroz</li>
+            <li wm-obrigatorio>Feijão</li>
+            <li class='opcional'>Carne</li>
+            <li class='opcional'>Ovo</li>
+        </ul>
+    </div>
+    <form>
+        <input type='text' name='texto'>
+        <input type='password' name='senha'>
+        <input type='checkbox' name='check1'>
+        <input type='radio' name='radio1'>
+        <input type='file' name='arquivo'>
+    </form>
+
+    <script>
+        // Selecionar a partir do ID
+        $('#feira').addClass('destaque').removeClass('destaque')
+        // Selecionando elementos 
+        $('li').addClass('destaque')
+        //  Selecionando um seletor de atributo
+        $('[wm-obrigatorio]').removeClass('destaque')
+        // Selecionando o elemento com classe elemento.classe
+        $('li.opcional').removeClass('destaque')
+        // Selecionando uma div que dentro tem uma tag p e dentro um span
+        $('div p span').addClass('destaque')
+
+        // Exclusivos do Jquery
+        // Primeiro elemento do tipo "li"
+        $('li:first').css('border', 'solid 3px yellow')
+        // selecionando elementos ímpares
+        $('li:odd').css('border', 'solid 10px orange')
+        // selecionando elemento "great than" = "maior que"
+        // parâmetro = índice, ex: gt(1) pega a partir do indice 2
+        $('li:gt(0)').css('border', 'solid 10px white')
+        // Selecionando o último elemento
+        $('li:not(:last)').css('border', 'none')
+        // Vefiricando se o elemento contém algo
+        $('li:contains("r")').css('background-color', 'black')
+        
+        // Trabalhando com formulários
+        // Escondendo todos os elementos
+        $('form *').hide()
+        $('form :text').show()
+        $('form :password').show()
+        $('form :checkbox').show()
+        $('form :radio').show()
+        $('form :file').show()
+
+    </script>
+</body>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <!-- <link rel="stylesheet" href="css/tag.css"> -->
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div  {
+            box-sizing: border-box;
+        }
+
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;           
+        }
+
+        /* pegando o 3° filho dentro de um flex-container => div 3 */
+        .flex-container div:nth-child(3) {
+            background-color: indianred;
+
+            /* manipulando a ordem de um item dentro do flex box */
+            /* por padrão todos os itens tem o peso 0. */
+            /* colocando ordem 1 ele passa a ter ordem maior que os outros */
+            order: 1; /* move o item para o fim da box */
+            order: 0; /* retorna à ordem definida originalmente no html */
+            order: -1; /* o item tem uma ordem menor que a dos outros */
+
+            align-self: center;
+            align-self: flex-end;
+            align-self: flex-start;
+            align-self: stretch; /* valor padrão */
+        }
+
+        .flex-container div {
+            width: 100px;
+            flex-grow: 0; /* não altera o tamanho dos ítens na box */
+            /* peso 1 preenche toda a caixa expandindo os */
+            /* elementos com tamanhos equivalentes => flex-grow: 1; */
+            flex-grow: 1;
+        }
+
+        .flex-container div:nth-child(1) {
+            /* dando peso 2 ao primeiro filho */
+            flex-grow: 2;
+        }
+
+        .flex-container {
+            /* classe flex-container com tamanho menor que a soma dos itens */
+            width: 300px; /* os itens somam 400px */
+            /* encolhendo para ajustar ao tamnho de 300px */
+            flex-shrink: 1; /* encolhe com peso igual a todos os elementos */
+        }
+
+        .flex-container div:nth-child(1) {
+            /* encolhendo o filho 1 com maior peso */
+            flex-shrink: 5; /* encolhe o filho 5x mais que os outros */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

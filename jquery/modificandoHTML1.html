@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #01</h1>
+    <div id='conteudo1'></div>
+    <div id='conteudo2'></div>
+    <div id='conteudo3'></div>
+    <div>Sem ID!</div>
+
+    <script>
+        // Conteúdo 1 - Adicionando um parágrafo
+        $('#conteudo1').append('<p>1</p>')
+
+        // Conteúdo 2 - Formas de adicionar criando elementos
+        const elementos = [
+            $('<li></li>').append('Arroz'),
+            $('<li>').append('Feijão'),
+            $('<li>').append('Carne')
+        ]
+
+        // Criando uma ul e adicionando os elementos acima dentro
+        // a função prepend adiciona no início da lista o append no final
+        const lista = $('<ul><li>Sorvete</li></ul>').prepend(elementos)
+        $('#conteudo2').append(lista)
+
+        // Conteúdo 3
+        $('#conteudo3').append('<h1>1</h1>')
+            .append('<h1>2</h1>')
+            .prepend('<h1>0</h1>')
+        // Substituindo o conteudo dentro da tag => função .html
+        $('#conteudo3').html('<h1>123</h1>')
+        // Adicionando texto puro => função .text
+        $('#conteudo3').text('<h1>123</h1>')
+
+        // Alterando todas as divs que tenham id
+        $('div[id]').html('<strong>Todos!</strong>')
+    </script>
+</body>

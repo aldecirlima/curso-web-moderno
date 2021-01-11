@@ -1,0 +1,57 @@
+<!-- Data versão 2.0 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datas</title>
+    <style>
+        .datavencida {
+            background-color: rgb(241, 123, 123);
+        }
+        .datahoje {
+            background-color: rgb(226, 215, 62);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p capt-date>06/10/2020</p>
+        <p capt-date>07/10/2020</p>
+        <p capt-date>09/10/2020</p>
+        <p capt-date>05/10/2020</p>
+        <p capt-date>02/10/2020</p>
+        <p capt-date>09/10/2020</p>
+        <p capt-date>02/10/2020</p>
+        <p capt-date>05/10/2020</p>
+        <p capt-date>07/10/2020</p>
+        <p capt-date>06/10/2020</p>
+    </div>
+    <script>
+        const parag = document.querySelectorAll('[capt-date]')
+        // console.log(parag)
+        const dataAgora = new Date()
+        const dia = dataAgora.getDate()
+        const mes = dataAgora.getMonth() + 1
+        const ano = dataAgora.getFullYear()
+        const dataHoje = new Date(ano, mes - 1, dia)
+        // const classes = parag.classList
+        parag.forEach(e => {
+            let classesEstilo = e.classList
+            let dCalc = e.innerText.split('/')
+            let dataCapt = new Date(parseInt(dCalc[2]),   
+                parseInt(dCalc[1]) - 1, parseInt(dCalc[0]))
+            classesEstilo.add('datahoje')
+            if(dataHoje > dataCapt) {
+                classesEstilo.remove('datahoje')
+                classesEstilo.add('datavencida')
+            } 
+            if(dataHoje < dataCapt) {
+                classesEstilo.remove('datahoje')
+            }
+            // console.log(dataCapt)
+        })
+ 
+    </script>
+</body>
+</html>

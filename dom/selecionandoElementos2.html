@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>
+        // querySelector para id precisa usar o #    
+        document.querySelector('#primeiro').classList.add('destaque')
+
+        // querySelectorAll retorna um NodeList que tem a função forEach
+        // função para selecionar todos os elementos
+        const selecionar = seletor => document.querySelectorAll(seletor)
+            .forEach(e => e.classList.add('destaque'))
+        
+        // função para remover a seleção de todos os elementos
+        const deSelecionar = seletor => document.querySelectorAll(seletor)
+            .forEach(e => e.classList.remove('destaque'))
+
+        // utilizando as funções
+        selecionar('div')
+        deSelecionar('*')
+
+        // selecionando elementos com as classes terceiro e ultimo no mesmo elemento
+        selecionar('.terceiro.ultimo') 
+        deSelecionar('*')
+
+        // selecionar "não primeiro" um elemento que não tenha a classe primeiro
+        selecionar(':not(#primeiro)')
+        deSelecionar('*')
+
+        // Selecionando o primeiro filho de um elemento
+        selecionar(':nth-child(1)')
+        deSelecionar('*')
+
+        // selecionando o primeiro elemento de um determinado tipo
+        selecionar('div:nth-of-type(1)')
+        deSelecionar('*')
+
+        // selecionando a partir de um atributo
+        selecionar('[wb-attrib]')
+    </script>
+</body>
+</html>

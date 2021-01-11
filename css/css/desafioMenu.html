@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            /* borda geral da pagina, aplicada a todos os elementos */
+            box-sizing: border-box;
+        }
+
+        body {
+            /* definições gerais do body */
+            /* configurações aplicadas a todos os elementos em body */
+            margin: 0;
+            font-family: 'Oswald', sans-serif;
+            background-color: lightgray;
+        }
+
+        .cabecalho {
+            background-color: #333;
+            /* inserindo uma borda inferior */
+            border-bottom: solid 5px #4faddb;
+            height: 80px;
+            /* definindo o tamanho do conteúdo do tamanho do box */
+            box-sizing: content-box;
+        }
+
+        .logo {
+            display: inline-block;
+            height: 80px;
+            /* espaçamento nos cantos - padding */
+            padding: 15px;
+        }
+
+        .logo img {
+            /* definindo a imagem a no máximo o tamanho a logo */
+            /* isso faz com que a imagem ocupe no máximo o tamanho */
+            /* disponível na classe "logo" */
+            height: 100%;
+        }
+
+        .menu-toggle {
+            /* fazendo o toogle flutuar para a direita */
+            float: right;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            /* a margin descola o toogle do canto */
+            margin: 20px 15px;
+        }
+
+        .menu {
+            /* trazendo os itens do menu para dentro do cabeçalho */
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 25px;
+        }
+        
+        .menu ul {
+            /* tirado a margin e o padding do elemento "ul" */
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu li {
+            /* alinhando itens "li" na horizontal dentro do cabeçalho */
+            display: inline-block;
+        }
+
+        .cabecalho a {
+            /* Removendo os "pontos/marcação" da tag a herdados da tag li */
+            /* deixar somente a fonte, sem os efeitos da "li" */
+            /* ou seja, tirar o estilo padrão do link com text-decoration */ 
+            text-decoration: none;
+            color: #eee;
+            font-size: 1.3em;
+        }
+        
+        .menu a {
+            padding: 15px;
+        }
+
+        .autenticacao {
+            /* movendo a classe autenticação para a direita */
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+
+        /* Passando o mouse por cima do menu */
+        .menu a:hover,
+        /* mantendo selecionado o estilo quando clicar - feito via javascript */
+        .menu a.selected {
+            background-color: #4faddb;
+            /* fonte */
+            color: #000;
+        }
+
+        .botao {
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin: 10px;
+        }
+        
+        .destaque {
+            background: #f50a31;
+            color: #fff;
+        }
+
+        /* mostrando ou não o toggle */
+        @media (min-width: 679px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 678px) {
+            .menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 910px) {
+            .autenticacao {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        // sempre que o hash "#" muda ele chama a função
+        window.onhashchange = function(e) {
+            // quebrando a URL pelo # pegando o segundo elemento = índice [1]
+            // ex: file:///Z:/css/css/desafioMenu.html#inicio
+            // Quebra a url em duas partes gerando um array e pega o indice 1
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+            // console.log(oldURL, newURL)
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+            // aplicando e removendo a classe selected nos links
+            oldLink && oldLink.classList.remove('selected')
+            newLink && newLink.classList.add('selected')
+        }
+    </script>
+</body>
+
+</html>

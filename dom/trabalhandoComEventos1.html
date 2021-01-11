@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <!-- onclick="navegarEm5s(event)" -->
+        <a espera-um-pouco href="https://google.com.br">Google</a>
+    </div>
+    <script>
+        // Criando uma função para capturar o evento onClick
+        function navegarEm5s(e) {
+            // Previnindo/evitando o comportamento padrão...
+            e.preventDefault()
+            console.log('Saindo em 5s...')
+            setTimeout(() => {
+                // target é o elemento html que disparou o evento
+                // Capturando o link href => target
+                const link = e.target
+                // substituindo o endereço na barra de navegação do browser
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // // Selecionando o elemento no script e capturando o evento onClick
+        // const a = document.querySelector('a')
+        // // após capturada a tag a, chamar a função
+        // a.onclick = navegarEm5s
+
+        // Usando atributos personalizados
+        // Atributos personalizados só são utilizados pelo javaScript
+        const espera = document.querySelector('[espera-um-pouco]')
+        espera.onclick = navegarEm5s
+
+    </script>
+</body>

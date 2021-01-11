@@ -1,0 +1,17 @@
+Acessar pelo terminal a pasta do projeto
+
+Configurando manualmente o arquivo package.json
+Dentro da pasta do módulo funcionarios digitar o comando: npm init 
+
+Configurando automatico o arquivo package.json
+Dentro da pasta do módulo funcionarios digitar o comando: npm init -y
+
+
+Baixando e instalando um dependência dentro do módulo com o npm já adicionando 
+a dependência dentro de package.json
+Utilizar o comando npm i --save "nome_da_dependencia"
+ex: npm i --save axios
+
+Instalar uma versão fixa de uma dependência
+comando: npm i --save axios@0.17.1 -E => independente da versao atual
+ele baixa e instala a versão exata informada, no caso, 0.17.1

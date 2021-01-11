@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log() {
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() // pegando o elemento pai 
+        lista.childNodes.log() // pegando os elementos filhos
+
+        // pegando o primeiro elemento da lista
+        const primeiro = lista.firstChild
+        primeiro.log()
+        
+        // a partir do primeiro elemento, pegar o próximo elemento...
+        primeiro.nextSibling.log() 
+
+        // pegando o último elemento
+        const ultimo = lista.lastChild
+        ultimo.log()
+
+        // pegando o elemento anterior...
+        ultimo.previousSibling.log()
+
+        // pegando todos os filhos (outra forma)...
+        lista.children.log() // só tras os elementos, sem textos...
+
+        // pegando o primeiro filho (outra forma)...
+        lista.firstElementChild.log()
+
+        // pegando ultimo filho...
+        lista.lastElementChild.log()
+
+        // Misturando as funções
+        lista.parentNode.previousElementSibling.log()
+        lista.parentNode.nextElementSibling.log()
+
+        document.querySelectorAll('div ul li').log()
+
+    </script>
+</body>
+
+</html>
